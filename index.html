@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juliya Magic✨ Shop — English Learning Materials</title>
+    
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           🎨 MODERN COLOR SCHEME & VARIABLES
+           ============================================ */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #f59e0b;
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ============================================
+           ✨ DISNEY-STYLE ANIMATED STARS
+           ============================================ */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px var(--primary);
+        }
+
+        .star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+            animation: sparkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: var(--min-opacity); transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+        }
+
+        /* Floating magic particles */
+        .magic-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent), 0 0 20px var(--secondary);
+            animation: float-up var(--float-duration) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes float-up {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(1.5); }
+        }
+
+        /* ============================================
+           🏷️ MODERN HEADER
+           ============================================ */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--accent); }
+            50% { box-shadow: 0 0 20px var(--accent), 0 0 30px var(--secondary); }
+        }
+
+        header h1 {
+            font-family: 'Comic Neue', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: 0 0 60px rgba(99, 102, 241, 0.5);
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* ============================================
+           🛍️ MODERN PRODUCTS GRID
+           ============================================ */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px 60px;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        /* Glassmorphism Card Design */
+        .product-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-glow), 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        /* 🎥 VIDEO STYLES */
+        .product-video {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .product-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+            display: block;
+        }
+
+        /* Эффект блика на видео */
+        .product-video::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: videoShine 4s infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes videoShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 🔊 КНОПКА ВКЛЮЧЕНИЯ ЗВУКА (в карточке товара) */
+        .sound-toggle {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            width: 42px;
+            height: 42px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sound-toggle:hover {
+            background: rgba(99, 102, 241, 0.8);
+            transform: scale(1.1);
+            border-color: var(--primary);
+        }
+
+        .sound-toggle.unmuted {
+            background: rgba(16, 185, 129, 0.8);
+            border-color: var(--success);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Индикатор "Видео" в углу */
+        .video-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .product-info {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.5);
+        }
+
+        /* ============================================
+           🪟 MODERN MODAL WINDOW
+           ============================================ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 100px rgba(0, 0, 0, 0.5), var(--shadow-glow);
+            animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlideUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(236, 72, 153, 0.2);
+            color: var(--secondary);
+            transform: rotate(90deg);
+            border-color: var(--secondary);
+        }
+
+        /* Modal Carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background: #000;
+            border-radius: 32px 32px 0 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            background: #1e293b;
+        }
+        
+        .carousel-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 5;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.3);
+            border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* 🔊 КНОПКА ЗВУКА В МОДАЛЬНОМ ОКНЕ */
+        .modal-sound-toggle {
+            position: absolute;
+            bottom: 20px;
+            right: 80px;
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-sound-toggle:hover {
+            background: rgba(99, 102, 241, 0.8);
+            transform: scale(1.1);
+            border-color: var(--primary);
+        }
+
+        .modal-sound-toggle.unmuted {
+            background: rgba(16, 185, 129, 0.8);
+            border-color: var(--success);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        .modal-body {
+            padding: 35px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-desc {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .modal-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            text-align: center;
+            display: block;
+        }
+
+        .modal-buy-btn {
+            display: block;
+            background: linear-gradient(135deg, #0088cc 0%, #0099ff 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 16px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(0, 136, 204, 0.4);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .modal-buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 136, 204, 0.6);
+        }
+
+        /* ============================================
+           🦶 FOOTER
+           ============================================ */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        .footer-sparkle {
+            color: var(--accent);
+            animation: glow 2s infinite;
+            display: inline-block;
+        }
+
+        /* ============================================
+           📱 RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .products-grid { grid-template-columns: 1fr; padding: 0 20px 40px; gap: 20px; }
+            .carousel { height: 250px; }
+            .modal-body { padding: 25px; }
+            .modal-title { font-size: 1.6rem; }
+            .modal-sound-toggle { right: 70px; bottom: 15px; width: 40px; height: 40px; }
+            .sound-toggle { width: 38px; height: 38px; font-size: 1rem; }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--primary-dark) 0%, var(--secondary) 100%); }
+    </style>
+</head>
+<body>
+
+    <!-- ✨ ANIMATED STARS CONTAINER -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <!-- ============================================
+         🏷️ HEADER
+         ============================================ -->
+    <header>
+        <div class="header-badge">✨ Premium Learning Materials</div>
+        <h1>Juliya Magic Shop</h1>
+        <p>Author-developed English learning materials — games, flashcards, and interactive content</p>
+    </header>
+
+    <!-- ============================================
+         🛍️ PRODUCTS GRID (ВИДЕО С КНОПКАМИ ЗВУКА)
+         ============================================ -->
+    <main class="products-grid">
+
+        <!-- 🔹 ТОВАР 1 -->
+        <!-- 
+            ИНСТРУКЦИЯ:
+            1. Замените src="video1.mp4" на путь к вашему видео
+            2. videoId должен быть уникальным для каждого товара (video1, video2, video3)
+        -->
+        <div class="product-card" 
+             data-title="Name That Tune🎶 Christmas🎅🏿"
+             data-desc="Guess Christmas Songs, Movies & Adverts"
+             data-price="490 ₽"
+             data-video-src="video1.mp4"
+             data-telegram-text="Hello! I want to purchase Name That Tune🎶 Christmas🎅🏿: for 490 ₽">
+            
+            <div class="product-video">
+                <video autoplay muted loop playsinline id="video1">
+                    <source src="video1.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео
+                </video>
+                
+                <!-- 🔊 КНОПКА ВКЛЮЧЕНИЯ ЗВУКА -->
+                <button class="sound-toggle" onclick="toggleSound(event, 'video1')" title="Включить/выключить звук">
+                    🔇
+                </button>
+                
+                <div class="video-badge">PREVIEW</div>
+            </div>
+            
+            <div class="product-info">
+                <h3 class="product-title">Name That Tune🎶 Christmas🎅🏿</h3>
+                <p class="product-desc">Guess Christmas Songs, Movies & Adverts</p>
+                <div class="product-footer">
+                    <div class="product-price">490 ₽</div>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔹 ТОВАР 2 -->
+        <div class="product-card" 
+             data-title="Name That Tune🎶 Disney🎬"
+             data-desc="Listen to Disney soundtracks and guess the movie"
+             data-price="390 ₽"
+             data-video-src="video2.mp4"
+             data-telegram-text="Hello! I want to purchase: Name That Tune🎶 Christmas🎅🏿 490 ₽">
+            
+            <div class="product-video">
+                <video autoplay muted loop playsinline id="video2">
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+                
+                <!-- 🔊 КНОПКА ВКЛЮЧЕНИЯ ЗВУКА -->
+                <button class="sound-toggle" onclick="toggleSound(event, 'video2')" title="Включить/выключить звук">
+                    🔇
+                </button>
+                
+                <div class="video-badge">PREVIEW</div>
+            </div>
+            
+            <div class="product-info">
+                <h3 class="product-title">Name That Tune🎶 Disney🎬</h3>
+                <p class="product-desc">Listen to Disney soundtracks and guess the movie</p>
+                <div class="product-footer">
+                    <div class="product-price">390 ₽</div>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔹 ТОВАР 3 -->
+        <div class="product-card" 
+             data-title="Global Issues (Grade 8) + Passive Voice + Vocabulary Song"
+             data-desc="Study Global Issues with fun"
+             data-price="950 ₽"
+             data-video-src="video3.mp4"
+             data-telegram-text="Hello! I want to purchase: Global Issues + Passive Voice + Vocabulary Song for 950 ₽">
+            
+            <div class="product-video">
+                <video autoplay muted loop playsinline id="video3">
+                    <source src="video3.mp4" type="video/mp4">
+                </video>
+                
+                <!-- 🔊 КНОПКА ВКЛЮЧЕНИЯ ЗВУКА -->
+                <button class="sound-toggle" onclick="toggleSound(event, 'video3')" title="Включить/выключить звук">
+                    🔇
+                </button>
+                
+                <div class="video-badge">PREVIEW</div>
+            </div>
+            
+            <div class="product-info">
+                <h3 class="product-title">Global Issues🌐 (Grade 8) + Passive Voice + Vocabulary Song🎤</h3>
+                <p class="product-desc">Global Issues Mind Maps, Fun Tasks & Amazing Song</p>
+                <div class="product-footer">
+                    <div class="product-price">950 ₽</div>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ Чтобы добавить новый товар:
+             1. Скопируйте блок <div class="product-card">
+             2. Измените videoId на video4, video5, и т.д.
+             3. Обновите data-video-src="videos/ВАШЕ_ВИДЕО.mp4"
+             4. Обновите название, описание и цену
+        -->
+
+    </main>
+
+    <!-- ============================================
+         🪟 MODAL WINDOW
+         ============================================ -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            
+            <!-- Carousel -->
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack"></div>
+                <button class="carousel-btn prev" id="carouselPrev">‹</button>
+                <button class="carousel-btn next" id="carouselNext">›</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+                
+                <!-- 🔊 КНОПКА ЗВУКА В МОДАЛЬНОМ ОКНЕ -->
+                <button class="modal-sound-toggle" id="modalSoundToggle" onclick="toggleModalSound()" title="Включить/выключить звук">
+                    🔇
+                </button>
+            </div>
+            
+            <!-- Product Details -->
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle">Product Name</h2>
+                <p class="modal-desc" id="modalDesc">Product description...</p>
+                <span class="modal-price" id="modalPrice">000 ₽</span>
+                
+                <!-- TELEGRAM BUY BUTTON -->
+                <a href="#" 
+                   class="modal-buy-btn" 
+                   id="modalBuyBtn"
+                   target="_blank">
+                    💬 Buy via Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         🦶 FOOTER
+         ============================================ -->
+    <footer>
+        <p>© 2026 Juliya Magic Teacher. All rights reserved. <span class="footer-sparkle">✨</span></p>
+    </footer>
+
+    <!-- ============================================
+         ⚙️ JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // ✨ CREATE ANIMATED STARS
+        // ============================================
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+                star.style.setProperty('--min-opacity', Math.random() * 0.5 + 0.3);
+                star.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(star);
+            }
+            createMagicParticles();
+        }
+
+        function createMagicParticles() {
+            const container = document.getElementById('starsContainer');
+            const particleCount = 20;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'magic-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.setProperty('--float-duration', (Math.random() * 10 + 10) + 's');
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                const colors = ['#f59e0b', '#ec4899', '#6366f1', '#8b5cf6'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}`;
+                container.appendChild(particle);
+            }
+        }
+
+        createStars();
+
+        // ============================================
+        // 🔊 ФУНКЦИЯ ВКЛЮЧЕНИЯ ЗВУКА (в карточках товаров)
+        // ============================================
+        function toggleSound(event, videoId) {
+            // Останавливаем всплытие события чтобы не открывалась модалка
+            event.stopPropagation();
+            
+            const video = document.getElementById(videoId);
+            const button = video.parentElement.querySelector('.sound-toggle');
+            
+            if (video.muted) {
+                video.muted = false;
+                video.volume = 1.0;
+                button.textContent = '🔊';
+                button.classList.add('unmuted');
+            } else {
+                video.muted = true;
+                video.volume = 0;
+                button.textContent = '🔇';
+                button.classList.remove('unmuted');
+            }
+        }
+
+        // ============================================
+        // 🔊 ФУНКЦИЯ ВКЛЮЧЕНИЯ ЗВУКА (в модальном окне)
+        // ============================================
+        function toggleModalSound() {
+            const video = document.querySelector('#carouselTrack video');
+            const button = document.getElementById('modalSoundToggle');
+            
+            if (video && !video.muted) {
+                video.muted = true;
+                button.textContent = '🔇';
+                button.classList.remove('unmuted');
+            } else if (video) {
+                video.muted = false;
+                video.volume = 1.0;
+                button.textContent = '🔊';
+                button.classList.add('unmuted');
+            }
+        }
+
+        // ============================================
+        // 🛍️ MODAL & CAROUSEL FUNCTIONALITY
+        // ============================================
+        const modal = document.getElementById('productModal');
+        const modalClose = document.getElementById('modalClose');
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const carouselDots = document.getElementById('carouselDots');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalBuyBtn = document.getElementById('modalBuyBtn');
+        const modalSoundToggle = document.getElementById('modalSoundToggle');
+
+        let currentSlide = 0;
+
+        // Open modal on Buy button click
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.querySelector('.buy-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                const title = card.dataset.title;
+                const desc = card.dataset.desc;
+                const price = card.dataset.price;
+                const videoSrc = card.dataset.videoSrc;
+                const telegramText = card.dataset.telegramText;
+                
+                modalTitle.textContent = title;
+                modalDesc.textContent = desc;
+                modalPrice.textContent = price;
+                
+                // Telegram link setup
+                const phoneNumber = "79160601011";
+                const message = encodeURIComponent(telegramText || `Hello! I want to purchase: ${title} for ${price}`);
+                modalBuyBtn.href = `https://t.me/+${phoneNumber}`;
+                
+                // Initialize carousel with VIDEO
+                initVideoCarousel(videoSrc);
+                
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Initialize carousel with Video
+        function initVideoCarousel(videoSrc) {
+            carouselTrack.innerHTML = '';
+            carouselDots.innerHTML = '';
+            currentSlide = 0;
+            
+            // Создаем слайд с видео
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            slide.innerHTML = `
+                <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+                    <source src="${videoSrc}" type="video/mp4">
+                </video>
+            `;
+            carouselTrack.appendChild(slide);
+            
+            // Создаем точку навигации
+            const dot = document.createElement('div');
+            dot.className = 'dot active';
+            dot.dataset.index = 0;
+            dot.addEventListener('click', () => goToSlide(0));
+            carouselDots.appendChild(dot);
+            
+            // Сброс кнопки звука в модалке
+            if (modalSoundToggle) {
+                modalSoundToggle.textContent = '🔇';
+                modalSoundToggle.classList.remove('unmuted');
+            }
+            
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        // Carousel controls
+        carouselPrev.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + 1) % 1;
+            updateCarousel();
+        });
+
+        carouselNext.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % 1;
+            updateCarousel();
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            // Останавливаем видео при закрытии
+            const video = carouselTrack.querySelector('video');
+            if(video) {
+                video.pause();
+                video.muted = true;
+            }
+            // Сбрасываем кнопку звука
+            if (modalSoundToggle) {
+                modalSoundToggle.textContent = '🔇';
+                modalSoundToggle.classList.remove('unmuted');
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
